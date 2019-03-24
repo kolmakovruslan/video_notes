@@ -12,8 +12,7 @@ class NotesListWidget extends StatelessWidget {
   NotesListWidget(this.notesFuture, this.noteDismissed);
 
   @override
-  Widget build(BuildContext context) =>
-      FutureBuilder<List<Note>>(
+  Widget build(BuildContext context) => FutureBuilder<List<Note>>(
         future: notesFuture,
         builder: (BuildContext context, AsyncSnapshot<List<Note>> snapshot) {
           if (snapshot.connectionState != ConnectionState.done) {
@@ -25,10 +24,7 @@ class NotesListWidget extends StatelessWidget {
             return Center(
               child: Text(
                 "Error",
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .display3,
+                style: Theme.of(context).textTheme.display3,
               ),
             );
           }
@@ -36,10 +32,7 @@ class NotesListWidget extends StatelessWidget {
             return Center(
               child: Text(
                 "Empty",
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .display3,
+                style: Theme.of(context).textTheme.display3,
               ),
             );
           }
@@ -50,11 +43,10 @@ class NotesListWidget extends StatelessWidget {
               final note = notes[index];
               return GestureDetector(
                 onTap: () {
-                  Navigator.of(context)
-                      .pushNamed(Routes.edit, arguments: note);
+                  Navigator.of(context).pushNamed(Routes.edit, arguments: note);
                 },
                 child: Dismissible(
-                  key: Key(note.id),
+                  key: UniqueKey(),
                   direction: DismissDirection.endToStart,
                   onDismissed: (_) {
                     noteDismissed(note);
@@ -66,17 +58,13 @@ class NotesListWidget extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           _formatDate(note.dateCreate.toLocal()),
-                          style: Theme
-                              .of(context)
-                              .textTheme
-                              .title,
+                          style: Theme.of(context).textTheme.title,
                         ),
                         Container(
                           padding: EdgeInsets.only(top: 8),
                           child: Text(
                             "File size ${(note.size / 1024).floor()} kbytes",
-                            style: Theme
-                                .of(context)
+                            style: Theme.of(context)
                                 .textTheme
                                 .subtitle
                                 .apply(color: Colors.black45),
