@@ -132,8 +132,9 @@ class _RecordVideoState extends State<RecordVideoPage> {
           ),
           Positioned(
             child: Visibility(
-              child: FloatingActionButton(
-                child: Icon(Icons.switch_camera),
+              child: IconButton(
+                icon: Icon(Icons.switch_camera),
+                color: Colors.white,
                 onPressed: () {
                   _switchCamera();
                 },
@@ -145,8 +146,9 @@ class _RecordVideoState extends State<RecordVideoPage> {
           ),
           Positioned(
             child: Visibility(
-              child: FloatingActionButton(
-                child: Icon(Icons.aspect_ratio),
+              child: IconButton(
+                icon: Icon(Icons.aspect_ratio),
+                color: Colors.white,
                 onPressed: () {
                   _switchRatio();
                 },
