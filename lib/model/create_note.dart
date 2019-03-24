@@ -11,5 +11,5 @@ Future<Note> createNote() async {
   final video = File("${dir.path}/$uuid.mp4");
   video.create();
   final date = DateTime.now();
-  return Note(uuid, uuid, video.path, date.toIso8601String());
+  return Note(uuid, uuid, video.path, 0, date);
 }

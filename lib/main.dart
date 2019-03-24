@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
       title: 'Video notes',
       theme: ThemeData(
         brightness: Brightness.light,
-        primarySwatch: Colors.blue,
+        backgroundColor: Colors.white,
+        primaryColor: Colors.blue,
       ),
       initialRoute: Routes.home,
       routes: {

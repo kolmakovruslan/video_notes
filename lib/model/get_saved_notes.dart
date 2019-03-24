@@ -12,7 +12,7 @@ Future<List<Note>> getSavedNotes() async {
     final id = name.split('.').first;
     final stat = video.statSync();
     final size = stat.size;
-    final dateCreate = stat.changed.toIso8601String();
-    return Note("$dateCreate $size", id, file, dateCreate);
+    final dateCreate = stat.changed;
+    return Note(name, id, file, size, dateCreate);
   }).toList();
 }
