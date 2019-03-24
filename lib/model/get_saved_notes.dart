@@ -1,11 +1,18 @@
 import 'dart:async';
 
+import 'package:video_notes/model/get_notes_dir.dart';
 import 'package:video_notes/model/note.dart';
 
 Future<List<Note>> getSavedNotes() async {
-  return Future.delayed(Duration(seconds: 1), () {
-    return List.generate(13, (index) {
-      return Note("Video #$index", "123", "video.mp4");
-    });
-  });
+  return (await getNotesDir()).list().where((entity) {
+    return entity.path.endsWith(".mp4");
+  }).map((video) {
+    final file = video.path;
+    final name = video.uri.pathSegments.last;
+    final id = name.split('.').first;
+    final stat = video.statSync();
+    final size = stat.size;
+    final dateCreate = stat.changed.toIso8601String();
+    return Note("$dateCreate $size", id, file, dateCreate);
+  }).toList();
 }
