@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:video_notes/model/get_saved_notes.dart';
 import 'package:video_notes/model/note.dart';
 
 class VideoListWidget extends StatelessWidget {
+  final Future<List<Note>> notesFuture;
+
+  VideoListWidget(this.notesFuture);
+
   @override
   Widget build(BuildContext context) => FutureBuilder<List<Note>>(
-        future: getSavedNotes(),
+        future: notesFuture,
         builder: (BuildContext context, AsyncSnapshot<List<Note>> snapshot) {
           if (snapshot.connectionState != ConnectionState.done) {
             return Center(

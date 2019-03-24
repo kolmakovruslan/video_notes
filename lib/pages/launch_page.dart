@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:video_notes/video_list_widget.dart';
+import 'package:video_notes/model/get_saved_notes.dart';
+import 'package:video_notes/widgets/video_list_widget.dart';
 
 class LaunchPage extends StatelessWidget {
   @override
@@ -8,7 +9,7 @@ class LaunchPage extends StatelessWidget {
         color: Theme.of(context).backgroundColor,
         child: Stack(
           children: <Widget>[
-            VideoListWidget(),
+            VideoListWidget(getSavedNotes()),
             Positioned(
               child: FloatingActionButton(
                 child: Icon(Icons.camera_alt),
