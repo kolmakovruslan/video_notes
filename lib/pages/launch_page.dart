@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:video_notes/model/get_saved_notes.dart';
+import 'package:video_notes/pages/record_video_page.dart';
 import 'package:video_notes/widgets/video_list_widget.dart';
 
 class LaunchPage extends StatelessWidget {
@@ -13,7 +14,11 @@ class LaunchPage extends StatelessWidget {
             Positioned(
               child: FloatingActionButton(
                 child: Icon(Icons.camera_alt),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => RecordVideoPage()),
+                  );
+                },
               ),
               bottom: 16,
               right: 16,
