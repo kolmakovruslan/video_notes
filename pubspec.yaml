@@ -12,6 +12,13 @@ dependencies:
   camera: 0.4.2
   path_provider: 0.5.0
   uuid: 2.0.0
+  video_player: 0.10.0+2
+  flutter_range_slider: 1.1.0
+  flutter_ffmpeg:
+    git:
+      url: git://github.com/tanersener/flutter-ffmpeg.git
+      ref: v0.1.1
+      path: packages/flutter_ffmpeg_video_lts
 
 dev_dependencies:
   flutter_test:

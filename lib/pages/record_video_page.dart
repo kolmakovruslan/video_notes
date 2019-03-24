@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:video_notes/model/create_note.dart';
 import 'package:video_notes/model/note.dart';
+import 'package:video_notes/routes.dart';
 import 'package:video_notes/widgets/time_ticker_widget.dart';
 
 class RecordVideoPage extends StatefulWidget {
@@ -65,9 +66,7 @@ class _RecordVideoState extends State<RecordVideoPage> {
   void _stopRecord() async {
     if (_controller == null || !_controller.value.isInitialized) return;
     _controller.stopVideoRecording().then((_) {
-      setState(() {
-        _error = false;
-      });
+      Navigator.of(context).pushReplacementNamed(Routes.edit, arguments: _note);
     }).catchError((_) {
       setState(() {
         _error = true;
