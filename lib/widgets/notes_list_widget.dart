@@ -48,16 +48,16 @@ class NotesListWidget extends StatelessWidget {
             itemCount: notes.length,
             itemBuilder: (context, index) {
               final note = notes[index];
-              return Dismissible(
-                key: Key(note.id),
-                direction: DismissDirection.endToStart,
-                onDismissed: (_) {
-                  noteDismissed(note);
+              return GestureDetector(
+                onTap: () {
+                  Navigator.of(context)
+                      .pushNamed(Routes.edit, arguments: note);
                 },
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.of(context)
-                        .pushNamed(Routes.edit, arguments: note);
+                child: Dismissible(
+                  key: Key(note.id),
+                  direction: DismissDirection.endToStart,
+                  onDismissed: (_) {
+                    noteDismissed(note);
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
