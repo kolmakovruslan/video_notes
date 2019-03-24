@@ -30,12 +30,18 @@ class _VideoEditState extends State<_VideoEditWidget> {
 
   int _from = 0;
   int _to = 10;
+  
+  bool _savingInProgress = false;
 
   _VideoEditState(this._note);
 
   Future<void> _saveVideo() async {
-    await cropVideo(_note, _from, _to);
-    Navigator.of(context).pop();
+    setState(() {
+      _savingInProgress = true;
+    });
+    cropVideo(_note, _from, _to).then((_) {
+      Navigator.of(context).pop();
+    });
   }
 
   @override
@@ -64,7 +70,7 @@ class _VideoEditState extends State<_VideoEditWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (!_controller.value.initialized) {
+    if (!_controller.value.initialized || _savingInProgress) {
       return Center(child: CircularProgressIndicator());
     }
     return Scaffold(
