@@ -5,11 +5,11 @@ import 'package:flutter/widgets.dart';
 import 'package:video_notes/model/note.dart';
 import 'package:video_notes/routes.dart';
 
-class VideoListWidget extends StatelessWidget {
+class NotesListWidget extends StatelessWidget {
   final Future<List<Note>> notesFuture;
   final void Function(Note) noteDismissed;
 
-  VideoListWidget(this.notesFuture, this.noteDismissed);
+  NotesListWidget(this.notesFuture, this.noteDismissed);
 
   @override
   Widget build(BuildContext context) =>

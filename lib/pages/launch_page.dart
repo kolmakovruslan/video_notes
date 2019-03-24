@@ -4,7 +4,7 @@ import 'package:video_notes/model/delete_note.dart';
 import 'package:video_notes/model/get_saved_notes.dart';
 import 'package:video_notes/model/note.dart';
 import 'package:video_notes/routes.dart';
-import 'package:video_notes/widgets/video_list_widget.dart';
+import 'package:video_notes/widgets/notes_list_widget.dart';
 
 class LaunchPage extends StatelessWidget {
   void _deleteNote(Note note) {
@@ -16,7 +16,7 @@ class LaunchPage extends StatelessWidget {
         appBar: AppBar(
           title: Text("Video notes"),
         ),
-        body: VideoListWidget(
+        body: NotesListWidget(
           getSavedNotes(),
           _deleteNote,
         ),
