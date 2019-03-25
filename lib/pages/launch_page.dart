@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:video_notes/model/delete_note.dart';
 import 'package:video_notes/model/get_saved_notes.dart';
 import 'package:video_notes/model/note.dart';
+import 'package:video_notes/model/share_note.dart';
 import 'package:video_notes/routes.dart';
 import 'package:video_notes/widgets/notes_list_widget.dart';
 
@@ -17,6 +18,10 @@ class _LaunchPageState extends State<LaunchPage> {
     setState(() {});
   }
 
+  void _shareNote(Note note) {
+    shareNote(note);
+  }
+
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -25,6 +30,7 @@ class _LaunchPageState extends State<LaunchPage> {
         body: NotesListWidget(
           getSavedNotes(),
           _deleteNote,
+          _shareNote,
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.camera_alt),
