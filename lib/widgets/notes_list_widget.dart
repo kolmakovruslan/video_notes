@@ -8,8 +8,9 @@ import 'package:video_notes/routes.dart';
 class NotesListWidget extends StatelessWidget {
   final Future<List<Note>> notesFuture;
   final void Function(Note) noteDismissed;
+  final void Function(Note) noteShared;
 
-  NotesListWidget(this.notesFuture, this.noteDismissed);
+  NotesListWidget(this.notesFuture, this.noteDismissed, this.noteShared);
 
   @override
   Widget build(BuildContext context) => FutureBuilder<List<Note>>(
@@ -53,21 +54,34 @@ class NotesListWidget extends StatelessWidget {
                   },
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Stack(
                       children: <Widget>[
-                        Text(
-                          _formatDate(note.dateCreate.toLocal()),
-                          style: Theme.of(context).textTheme.title,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              _formatDate(note.dateCreate.toLocal()),
+                              style: Theme.of(context).textTheme.title,
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(top: 8),
+                              child: Text(
+                                "File size ${(note.size / 1024).floor()} kbytes",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .subtitle
+                                    .apply(color: Colors.black45),
+                              ),
+                            )
+                          ],
                         ),
-                        Container(
-                          padding: EdgeInsets.only(top: 8),
-                          child: Text(
-                            "File size ${(note.size / 1024).floor()} kbytes",
-                            style: Theme.of(context)
-                                .textTheme
-                                .subtitle
-                                .apply(color: Colors.black45),
+                        Positioned(
+                          right: 0,
+                          child: IconButton(
+                            icon: Icon(Icons.share),
+                            onPressed: () {
+                              noteShared(note);
+                            },
                           ),
                         )
                       ],

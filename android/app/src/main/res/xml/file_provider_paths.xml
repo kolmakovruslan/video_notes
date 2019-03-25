@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path name="external_files" path="../app_flutter/Notes"/>
+    <cache-path name="cache_files" path="../app_flutter/Notes"/>
+</paths>
