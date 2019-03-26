@@ -15,6 +15,7 @@
 *.ipr
 *.iws
 .idea/
+/gen/
 
 # Visual Studio Code related
 .vscode/
